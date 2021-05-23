@@ -40,13 +40,7 @@ void __vector_expand(VectorList* vlist, int desired_capacity) {
 
 	free(vlist->arr);
 
-	vlist->arr = malloc(sizeof(Node*) * vlist->capacity);
-
-	for (int i = 0; i < vlist->size; i++) {
-		vlist->arr[i] = tmp_array[i];
-	}
-
-	free(tmp_array);
+	vlist->arr = tmp_array;
 }
 
 Node* vector_list_get(VectorList* vlist, int index) {
@@ -61,4 +55,6 @@ void vector_list_set(VectorList* vlist, int index, Node* node) {
 	if (index > vlist->capacity - 1) {
 		__vector_expand(vlist, index);
 	}
+
+	vlist->arr[index] = node;
 }
