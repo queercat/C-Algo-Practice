@@ -1,0 +1,1 @@
+/* hashmap.h -- this file was created by May Tusek, feel free to use it wherever you want. */
