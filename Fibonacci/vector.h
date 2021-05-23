@@ -20,6 +20,8 @@ VectorList vector_list_init() {
 	vlist.size = 0;
 
 	vlist.arr = malloc(sizeof(Node*) * vlist.capacity);
+
+	return vlist;
 }
 
 /**
