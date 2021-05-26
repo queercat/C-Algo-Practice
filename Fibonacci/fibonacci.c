@@ -21,12 +21,17 @@ int fib(int n) {
 	}
 
 	return (hmap_int_get(&memo, (n - 2)) + hmap_int_get(&memo, (n - 1)));
+	//return (fib(n - 2) + fib(n - 1));
 }
 
 int main() {	
-
 	memo = hmap_int_init();
-	int result = fib(38);
+	
+	int result;
 
-	printf("%i", result);
+	for (int i = 0; i < 1000000; i++) {
+		result = fib(i);
+	}
+
+	printf("%d", result);
 }

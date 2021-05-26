@@ -1,6 +1,8 @@
 /* vector.h -- this file was created by May Tusek, feel free to use it wherever you want. */
 
 #pragma once
+
+#include <stdio.h>
 #include "list.h"
 
 #define DEFAULT_CAPACITY 32
@@ -11,6 +13,14 @@ typedef struct VectorInt {
 
 	int* arr;
 } VectorInt;
+
+static int max(int a, int b) {
+	if (a > b) {
+		return a;
+	}
+
+	return b;
+}
 
 VectorInt vector_int_init() {
 	VectorInt vint;
@@ -53,11 +63,12 @@ void vector_int_set(VectorInt* vint, int index, int value) {
 	}
 
 	vint->arr[index] = value;
+	vint->size = max(index, vint->size);
 }
 
 int vector_int_get(VectorInt* vint, int index) {
 	if (index > vint->capacity - 1) {
-		return -1;
+		vector_int_expand(vint, index);
 	}
 
 	return vint->arr[index];

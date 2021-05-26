@@ -23,11 +23,11 @@ HashmapInt hmap_int_init() {
 }
 
 void hmap_int_set(HashmapInt* hmap_int, int key, int value) {
-	vector_int_set(&hmap_int->bucket, hmap_int_hash(&hmap_int->bucket, key), value);
+	vector_int_set(&hmap_int->bucket, key, value);
 }
 
 int hmap_int_get(HashmapInt* hmap_int, int key) {
-	return vector_int_get(&hmap_int->bucket, hmap_int_hash(&hmap_int->bucket, key));
+	return vector_int_get(&hmap_int->bucket, key);
 }
 
 // Maps an int to a linked list.
